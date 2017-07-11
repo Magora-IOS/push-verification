@@ -12,13 +12,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-        window = UIWindow(frame: UIScreen.main.bounds)
+        self.window = UIWindow(frame: UIScreen.main.bounds)
 
-        setupMainVC()
-        setupNotifications()
+        self.setupMainVC()
+        self.setupNotifications()
         
-        window!.backgroundColor = UIColor.white
-        window!.makeKeyAndVisible()
+        self.window!.backgroundColor = UIColor.white
+        self.window!.makeKeyAndVisible()
 
         return true
     }
@@ -34,9 +34,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
 
+        // Convert device token to hexidecimal string.
         let tokens = deviceToken.map { String(format: "%02.2hhx", $0) }
         let token = tokens.joined()
         NSLog("AppDelegate. Device token: '%@'", token)
+        self.mainVC?.setDeviceToken(token)
     }
     
     func application(
@@ -44,12 +46,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFailToRegisterForRemoteNotificationsWithError error: Error) {
 
         NSLog("AppDelegate. Failed to register. ERROR: '%@'", error as NSError)
+        self.mainVC?.setDeviceToken("ERROR getting device token")
     }
 
     func setupMainVC() {
-        mainVC = MainVC(nibName: "MainVC", bundle: nil)
-        let nvc = UINavigationController(rootViewController: mainVC!)
-        window!.rootViewController = nvc
+        self.mainVC = MainVC(nibName: "MainVC", bundle: nil)
+        let nvc = UINavigationController(rootViewController: self.mainVC!)
+        self.window!.rootViewController = nvc
     }
 
     func setupNotifications() {
