@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  push-verification
-//
-//  Created by Michael Kapelko on 11/07/17.
-//  Copyright © 2017 Magora. All rights reserved.
-//
 
 import UIKit
 
