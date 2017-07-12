@@ -3,18 +3,24 @@ import UIKit
 
 class MainVC: UIViewController {
     
-    @IBOutlet var deviceTokenTextField: UITextField!
+    @IBOutlet var deviceTokenTextView: UITextView!
 
     // MARK: PUBLIC
 
+    // TODO: Use reactive setup.
     func setDeviceToken(_ value: String) {
-        self.deviceTokenTextField.text = value
+        self.deviceTokenTextView.text = value
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setup()
+    }
 
-        // Do any additional setup after loading the view.
+    // MARK: PRIVATE
+
+    func setup() {
+        self.navigationItem.title = "Push verification"
     }
 }
 

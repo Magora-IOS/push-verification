@@ -22,12 +22,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         return true
     }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        NSLog("AppDelegate. UserInfo: '%@'", userInfo)
+    }
 
     func application(
         _ application: UIApplication,
         didRegister notificationSettings: UIUserNotificationSettings) {
 
         NSLog("AppDelegate. Notification seetings changed to '%@'", notificationSettings)
+        
+        // Register to receive push notifications.
+        UIApplication.shared.registerForRemoteNotifications()
     }
     
     func application(
@@ -60,8 +67,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Request permission to receive push notifications.
         let pushSettings = UIUserNotificationSettings(types: [.alert, .sound], categories: nil)
         UIApplication.shared.registerUserNotificationSettings(pushSettings)
-        // Register to receive push notifications.
-        UIApplication.shared.registerForRemoteNotifications()
+        
+        
 
         // TODO: iOS10+
     }
