@@ -1,4 +1,5 @@
 
+import RxCocoa
 import RxSwift
 import UIKit
 
@@ -6,9 +7,9 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var mainVC: MainVC?
+    var mainVC: MainVC!
     var notification: Notification!
-
+    
     let disposeBag = DisposeBag()
 
     func application(
@@ -28,14 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func setupApplication() {
         self.notification = Notification()
         self.setupMainVC()
-
-        // Bind the ugly way.
-        self.notification.deviceToken.asObservable()
-            .subscribe(onNext: { token in
-                self.mainVC?.setDeviceToken(token)
-                NSLog("AppDelegate. device token: '%@'", token)
-            })
-            .addDisposableTo(disposeBag)
+        // Sync device token.
+        self.mainVC.deviceToken = self.notification.deviceToken.asObservable()
+        //self.mainVC.deviceToken.asObservable().bind(to: self.notification.deviceToken).addDisposableTo(disposeBag)
     }
 
     private func setupMainVC() {
