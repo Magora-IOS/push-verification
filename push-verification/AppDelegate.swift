@@ -1,4 +1,5 @@
 
+import RxSwift
 import UIKit
 
 @UIApplicationMain
@@ -8,16 +9,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var mainVC: MainVC?
     var notification: Notification!
 
+    let disposeBag = DisposeBag()
+
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         self.window = UIWindow(frame: UIScreen.main.bounds)
-
-        self.notification = Notification()
-
-        self.setupMainVC()
-        
+        self.setupApplication()
         self.window!.backgroundColor = UIColor.white
         self.window!.makeKeyAndVisible()
 
@@ -26,7 +25,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK PRIVATE
 
-    func setupMainVC() {
+    private func setupApplication() {
+        self.notification = Notification()
+        self.setupMainVC()
+
+        // Bind the ugly way.
+        self.notification.deviceToken.asObservable()
+            .subscribe(onNext: { token in
+                self.mainVC?.setDeviceToken(token)
+                NSLog("AppDelegate. device token: '%@'", token)
+            })
+            .addDisposableTo(disposeBag)
+    }
+
+    private func setupMainVC() {
         self.mainVC = MainVC(nibName: "MainVC", bundle: nil)
         let nvc = UINavigationController(rootViewController: self.mainVC!)
         self.window!.rootViewController = nvc

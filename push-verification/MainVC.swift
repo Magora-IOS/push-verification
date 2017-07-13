@@ -9,7 +9,10 @@ class MainVC: UIViewController {
 
     // TODO: Use reactive setup.
     func setDeviceToken(_ value: String) {
-        self.deviceTokenTextView.text = value
+        self.deviceTokenTextView?.text = value
+        if (self.deviceTokenTextView != nil) {
+            NSLog("MainVC. setDeviceToken for text view: '%@'", value)
+        }
     }
     
     override func viewDidLoad() {
@@ -19,7 +22,7 @@ class MainVC: UIViewController {
 
     // MARK: PRIVATE
 
-    func setup() {
+    private func setup() {
         self.navigationItem.title = "Push verification"
     }
 }

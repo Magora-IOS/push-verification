@@ -36,8 +36,7 @@ class Notification {
         let tokenParts = deviceToken.map { String(format: "%02.2hhx", $0) }
         let token = tokenParts.joined()
         NSLog("Notification. Device token: '%@'", token)
-        // TODO
-        //self.mainVC?.setDeviceToken(token)
+        self.deviceToken.value = token
     }
 
     func application(
@@ -45,8 +44,7 @@ class Notification {
         didFailToRegisterForRemoteNotificationsWithError error: Error) {
 
         NSLog("Notification. Failed to register. ERROR: '%@'", error as NSError)
-        // TODO
-        //self.mainVC?.setDeviceToken("ERROR getting device token")
+        self.deviceToken.value = "ERROR getting device token"
     }
 
     init() {
