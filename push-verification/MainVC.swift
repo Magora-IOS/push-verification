@@ -4,6 +4,8 @@ import UIKit
 class MainVC: UIViewController {
     
     @IBOutlet var deviceTokenTextView: UITextView!
+    
+    var reactiveTest: ReactiveTest?
 
     // MARK: PUBLIC
 
@@ -21,6 +23,8 @@ class MainVC: UIViewController {
 
     func setup() {
         self.navigationItem.title = "Push verification"
+        
+        reactiveTest = ReactiveTest()
     }
 }
 
