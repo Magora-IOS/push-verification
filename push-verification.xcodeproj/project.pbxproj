@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		131A879C1F17326100569ED4 /* ReactiveTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131A879B1F17326100569ED4 /* ReactiveTest.swift */; };
 		131A879E1F174AF000569ED4 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131A879D1F174AF000569ED4 /* Notification.swift */; };
 		1335659E1F14B1B90094A823 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1335659D1F14B1B90094A823 /* AppDelegate.swift */; };
 		133565A51F14B1B90094A823 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 133565A41F14B1B90094A823 /* Assets.xcassets */; };
@@ -18,7 +17,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		131A879B1F17326100569ED4 /* ReactiveTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveTest.swift; sourceTree = "<group>"; };
 		131A879D1F174AF000569ED4 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		1335659A1F14B1B90094A823 /* push-verification.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "push-verification.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1335659D1F14B1B90094A823 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -71,7 +69,6 @@
 				133565B01F14DB640094A823 /* MainVC.swift */,
 				133565B11F14DB640094A823 /* MainVC.xib */,
 				131A879D1F174AF000569ED4 /* Notification.swift */,
-				131A879B1F17326100569ED4 /* ReactiveTest.swift */,
 				133565A41F14B1B90094A823 /* Assets.xcassets */,
 				133565A61F14B1B90094A823 /* LaunchScreen.storyboard */,
 				133565A91F14B1B90094A823 /* Info.plist */,
@@ -228,7 +225,6 @@
 				131A879E1F174AF000569ED4 /* Notification.swift in Sources */,
 				133565B21F14DB640094A823 /* MainVC.swift in Sources */,
 				1335659E1F14B1B90094A823 /* AppDelegate.swift in Sources */,
-				131A879C1F17326100569ED4 /* ReactiveTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

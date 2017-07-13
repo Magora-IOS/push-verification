@@ -6,7 +6,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var mainVC: MainVC?
-
+    var notification: Notification!
 
     func application(
         _ application: UIApplication,
@@ -14,47 +14,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         self.window = UIWindow(frame: UIScreen.main.bounds)
 
+        self.notification = Notification()
+
         self.setupMainVC()
-        self.setupNotifications()
         
         self.window!.backgroundColor = UIColor.white
         self.window!.makeKeyAndVisible()
 
         return true
     }
-    
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
-        NSLog("AppDelegate. UserInfo: '%@'", userInfo)
-    }
 
-    func application(
-        _ application: UIApplication,
-        didRegister notificationSettings: UIUserNotificationSettings) {
-
-        NSLog("AppDelegate. Notification seetings changed to '%@'", notificationSettings)
-        
-        // Register to receive push notifications.
-        UIApplication.shared.registerForRemoteNotifications()
-    }
-    
-    func application(
-        _ application: UIApplication,
-        didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-
-        // Convert device token to hexidecimal string.
-        let tokens = deviceToken.map { String(format: "%02.2hhx", $0) }
-        let token = tokens.joined()
-        NSLog("AppDelegate. Device token: '%@'", token)
-        self.mainVC?.setDeviceToken(token)
-    }
-    
-    func application(
-        _ application: UIApplication,
-        didFailToRegisterForRemoteNotificationsWithError error: Error) {
-
-        NSLog("AppDelegate. Failed to register. ERROR: '%@'", error as NSError)
-        self.mainVC?.setDeviceToken("ERROR getting device token")
-    }
+    // MARK PRIVATE
 
     func setupMainVC() {
         self.mainVC = MainVC(nibName: "MainVC", bundle: nil)
@@ -62,15 +32,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window!.rootViewController = nvc
     }
 
-    func setupNotifications() {
-        // iOS 8-10
-        // Request permission to receive push notifications.
-        let pushSettings = UIUserNotificationSettings(types: [.alert, .sound], categories: nil)
-        UIApplication.shared.registerUserNotificationSettings(pushSettings)
-        
-        
+    // MARK NOTIFICATION
+    
+    func application(
+        _ application: UIApplication,
+        didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
 
-        // TODO: iOS10+
+        self.notification.application(application, didReceiveRemoteNotification: userInfo)
     }
+    func application(
+        _ application: UIApplication,
+        didRegister notificationSettings: UIUserNotificationSettings) {
+
+        self.notification.application(application, didRegister: notificationSettings)
+    }
+    func application(
+        _ application: UIApplication,
+        didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+
+        self.notification.application(
+            application,
+            didRegisterForRemoteNotificationsWithDeviceToken: deviceToken)
+    }
+    func application(
+        _ application: UIApplication,
+        didFailToRegisterForRemoteNotificationsWithError error: Error) {
+
+        self.notification.application(
+            application, 
+            didFailToRegisterForRemoteNotificationsWithError: error)
+    }
+
 }
 

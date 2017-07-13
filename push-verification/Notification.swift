@@ -3,6 +3,8 @@ import RxSwift
 
 import UIKit
 
+// This class only works on iOS 8-10
+// TODO: Support iOS10+
 class Notification {
 
     let deviceToken: Variable<String> = Variable("")
