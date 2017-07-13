@@ -1,4 +1,5 @@
 
+import RxCocoa
 import RxSwift
 import UIKit
 
@@ -6,9 +7,9 @@ class MainVC: UIViewController {
 
     let deviceToken: Variable<String> = Variable("")
 
-    let disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
     
-    @IBOutlet var deviceTokenTextView: UITextView!
+    @IBOutlet private var deviceTokenTextView: UITextView!
     
     // MARK: PUBLIC
 
@@ -25,12 +26,9 @@ class MainVC: UIViewController {
     }
 
     private func setupDeviceToken() {
-        // Bind the ugly way.
-        self.deviceToken.asObservable()
-            .subscribe(onNext: { token in
-                self.deviceTokenTextView.text = token
-                NSLog("MainVC. device token: '%@'", token)
-            })
+        self.deviceToken
+            .asObservable()
+            .bind(to: self.deviceTokenTextView.rx.text)
             .addDisposableTo(disposeBag)
     }
     

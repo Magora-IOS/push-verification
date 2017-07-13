@@ -29,8 +29,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func setupApplication() {
         self.notification = Notification()
         self.setupMainVC()
+
         // Sync device token.
-        self.notification.deviceToken.asObservable().bind(to: self.mainVC.deviceToken).addDisposableTo(disposeBag)
+        self.notification.deviceToken
+            .asObservable()
+            .bind(to: self.mainVC.deviceToken)
+            .addDisposableTo(disposeBag)
     }
 
     private func setupMainVC() {
