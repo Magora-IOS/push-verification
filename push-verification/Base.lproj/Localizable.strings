@@ -1,0 +1,7 @@
+
+"Notifications.Token.Wait" = "Waiting for a device token";
+"Notifications.Token.Error" = "ERROR getting a device token. Am I in Simulator?";
+
+"NotificationsVC.Title" = "Push notifications";
+"NotificationsVC.Token.Title" = "Device token:";
+"NotificationsVC.Notifications.Title" = "Received notifications:";

@@ -5,11 +5,11 @@ import UIKit
 
 // This class only works on iOS 8-10
 // TODO: Support iOS10+
-class Notification {
-
-    let deviceToken: Variable<String> = Variable("")
+class Notifications {
 
     // MARK PUBLIC
+
+    let deviceToken: Variable<String> = Variable("")
     
     func application(
         _ application: UIApplication,
@@ -44,7 +44,7 @@ class Notification {
         didFailToRegisterForRemoteNotificationsWithError error: Error) {
 
         NSLog("Notification. Failed to register. ERROR: '%@'", error as NSError)
-        self.deviceToken.value = NSLocalizedString("Token.Error", comment: "")
+        self.deviceToken.value = NSLocalizedString("Notifications.Token.Error", comment: "")
     }
 
     init() {
@@ -55,7 +55,7 @@ class Notification {
                 categories: nil)
         UIApplication.shared.registerUserNotificationSettings(pushSettings)
         // Default value.
-        self.deviceToken.value = NSLocalizedString("Token.Wait", comment: "")
+        self.deviceToken.value = NSLocalizedString("Notifications.Token.Wait", comment: "")
     }
 }
 

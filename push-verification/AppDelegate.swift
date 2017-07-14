@@ -6,11 +6,9 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    // MARK PUBLIC
+
     var window: UIWindow?
-    var mainVC: MainVC!
-    var notification: Notification!
-    
-    let disposeBag = DisposeBag()
 
     func application(
         _ application: UIApplication,
@@ -26,42 +24,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK PRIVATE
 
+    private var notificationsVC: NotificationsVC!
+    private var notifications: Notifications!
+    
+    private let disposeBag = DisposeBag()
+
     private func setupApplication() {
-        self.notification = Notification()
-        self.setupMainVC()
+        // ViewModel.
+        self.notifications = Notifications()
+
+        // View.
+        self.notificationsVC = NotificationsVC(nibName: "NotificationsVC", bundle: nil)
+        let nvc = UINavigationController(rootViewController: self.notificationsVC)
+        self.window!.rootViewController = nvc
 
         // Sync device token.
-        self.notification.deviceToken
+        self.notifications.deviceToken
             .asObservable()
-            .bind(to: self.mainVC.deviceToken)
+            .bind(to: self.notificationsVC.deviceToken)
             .disposed(by: disposeBag)
     }
 
-    private func setupMainVC() {
-        self.mainVC = MainVC(nibName: "MainVC", bundle: nil)
-        let nvc = UINavigationController(rootViewController: self.mainVC!)
-        self.window!.rootViewController = nvc
-    }
-
-    // MARK NOTIFICATION
+    // MARK NOTIFICATIONS
     
     func application(
         _ application: UIApplication,
         didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
 
-        self.notification.application(application, didReceiveRemoteNotification: userInfo)
+        self.notifications.application(application, didReceiveRemoteNotification: userInfo)
     }
     func application(
         _ application: UIApplication,
         didRegister notificationSettings: UIUserNotificationSettings) {
 
-        self.notification.application(application, didRegister: notificationSettings)
+        self.notifications.application(application, didRegister: notificationSettings)
     }
     func application(
         _ application: UIApplication,
         didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
 
-        self.notification.application(
+        self.notifications.application(
             application,
             didRegisterForRemoteNotificationsWithDeviceToken: deviceToken)
     }
@@ -69,7 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFailToRegisterForRemoteNotificationsWithError error: Error) {
 
-        self.notification.application(
+        self.notifications.application(
             application, 
             didFailToRegisterForRemoteNotificationsWithError: error)
     }
