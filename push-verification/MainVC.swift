@@ -32,7 +32,7 @@ class MainVC: UIViewController {
         self.deviceToken
             .asObservable()
             .bind(to: self.deviceTokenTextView.rx.text)
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
     }
 
     private func setupTopOffset() {

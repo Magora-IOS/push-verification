@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.notification.deviceToken
             .asObservable()
             .bind(to: self.mainVC.deviceToken)
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
     }
 
     private func setupMainVC() {

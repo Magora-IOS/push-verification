@@ -44,15 +44,18 @@ class Notification {
         didFailToRegisterForRemoteNotificationsWithError error: Error) {
 
         NSLog("Notification. Failed to register. ERROR: '%@'", error as NSError)
-        self.deviceToken.value = "ERROR getting device token"
+        self.deviceToken.value = NSLocalizedString("Token.Error", comment: "")
     }
 
     init() {
+        // Register for push notifications.
         let pushSettings =
             UIUserNotificationSettings(
                 types: [.alert, .sound],
                 categories: nil)
         UIApplication.shared.registerUserNotificationSettings(pushSettings)
+        // Default value.
+        self.deviceToken.value = NSLocalizedString("Token.Wait", comment: "")
     }
 }
 
