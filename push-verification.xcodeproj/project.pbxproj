@@ -13,7 +13,7 @@
 		13DE37F41F18876900A4961D /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DE37F31F18876900A4961D /* Notifications.swift */; };
 		13DE37F81F18877C00A4961D /* NotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DE37F61F18877C00A4961D /* NotificationsVC.swift */; };
 		13DE37F91F18877C00A4961D /* NotificationsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13DE37F71F18877C00A4961D /* NotificationsVC.xib */; };
-		13DE37FC1F1889E200A4961D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 13DE37FA1F1889E200A4961D /* Localizable.strings */; };
+		13DE38001F18AE6C00A4961D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 13DE37FE1F18AE6C00A4961D /* Localizable.strings */; };
 		C246FB6D4D2AA0F4B018BA9C /* Pods_push_verification.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB31147A93EA9A53C16D6160 /* Pods_push_verification.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,7 +27,7 @@
 		13DE37F31F18876900A4961D /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		13DE37F61F18877C00A4961D /* NotificationsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsVC.swift; sourceTree = "<group>"; };
 		13DE37F71F18877C00A4961D /* NotificationsVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationsVC.xib; sourceTree = "<group>"; };
-		13DE37FB1F1889E200A4961D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		13DE37FF1F18AE6C00A4961D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		227C16C3E236007FECEEFB20 /* Pods-push-verification.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-push-verification.debug.xcconfig"; path = "Pods/Target Support Files/Pods-push-verification/Pods-push-verification.debug.xcconfig"; sourceTree = "<group>"; };
 		475807F341F86EE911EFCA02 /* Pods-push-verification.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-push-verification.release.xcconfig"; path = "Pods/Target Support Files/Pods-push-verification/Pods-push-verification.release.xcconfig"; sourceTree = "<group>"; };
 		DB31147A93EA9A53C16D6160 /* Pods_push_verification.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_push_verification.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,7 +72,7 @@
 				133565A41F14B1B90094A823 /* Assets.xcassets */,
 				133565A61F14B1B90094A823 /* LaunchScreen.storyboard */,
 				133565A91F14B1B90094A823 /* Info.plist */,
-				13DE37FA1F1889E200A4961D /* Localizable.strings */,
+				13DE37FE1F18AE6C00A4961D /* Localizable.strings */,
 			);
 			path = "push-verification";
 			sourceTree = "<group>";
@@ -181,7 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				133565A81F14B1B90094A823 /* LaunchScreen.storyboard in Resources */,
-				13DE37FC1F1889E200A4961D /* Localizable.strings in Resources */,
+				13DE38001F18AE6C00A4961D /* Localizable.strings in Resources */,
 				133565A51F14B1B90094A823 /* Assets.xcassets in Resources */,
 				13DE37F91F18877C00A4961D /* NotificationsVC.xib in Resources */,
 			);
@@ -259,10 +259,10 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		13DE37FA1F1889E200A4961D /* Localizable.strings */ = {
+		13DE37FE1F18AE6C00A4961D /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				13DE37FB1F1889E200A4961D /* Base */,
+				13DE37FF1F18AE6C00A4961D /* en */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
