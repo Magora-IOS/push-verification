@@ -1,0 +1,7 @@
+/* Notifications */
+"Notifications.Token.Wait" = "Ожидание токена устройства";
+"Notifications.Token.Error" = "ОШИБКА при получении токена устройства. Я в Симуляторе?";
+/* NotificationsVC */
+"NotificationsVC.Title" = "Уведомления Push";
+"NotificationsVC.Token.Title" = "Токен устройства:";
+"NotificationsVC.Notifications.Title" = "Принятые уведомления:";

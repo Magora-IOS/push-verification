@@ -38,12 +38,9 @@ class NotificationsVC: UIViewController {
     }
 
     private func setupTitles() {
-        self.navigationItem.title =
-            NSLocalizedString("NotificationsVC.Title", comment: "")
-        self.deviceTokenLabel.text =
-            NSLocalizedString("NotificationsVC.Token.Title", comment: "")
-        self.notificationsLabel.text =
-            NSLocalizedString("NotificationsVC.Notifications.Title", comment: "")
+        self.navigationItem.title = tr(.NotificationsVCTitle)
+        self.deviceTokenLabel.text = tr(.NotificationsVCTokenTitle)
+        self.notificationsLabel.text = tr(.NotificationsVCNotificationsTitle)
     }
 
     private func setupTopOffset() {
