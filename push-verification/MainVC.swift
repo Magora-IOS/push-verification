@@ -1,4 +1,5 @@
 
+import SnapKit
 import RxCocoa
 import RxSwift
 import UIKit
@@ -9,6 +10,7 @@ class MainVC: UIViewController {
 
     private let disposeBag = DisposeBag()
     
+    @IBOutlet private var topView: UIView!
     @IBOutlet private var deviceTokenTextView: UITextView!
     
     // MARK: PUBLIC
@@ -22,6 +24,7 @@ class MainVC: UIViewController {
 
     private func setup() {
         self.navigationItem.title = "Push verification"
+        self.setupTopOffset()
         self.setupDeviceToken()
     }
 
@@ -30,6 +33,13 @@ class MainVC: UIViewController {
             .asObservable()
             .bind(to: self.deviceTokenTextView.rx.text)
             .addDisposableTo(disposeBag)
+    }
+
+    private func setupTopOffset() {
+        // Make sure topView's top is anchored to topLayoutGuide's bottom.
+        self.topView.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(self.topLayoutGuide.snp.bottom)
+        }
     }
     
 }
