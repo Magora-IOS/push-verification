@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="deviceTokenLabel" destination="5wN-A5-a7J" id="4Pv-EV-iYo"/>
                 <outlet property="deviceTokenTextView" destination="7iP-Lm-ng5" id="X1z-N3-SgI"/>
+                <outlet property="notificationsContainerView" destination="KVg-uM-wlE" id="MP5-nL-684"/>
                 <outlet property="notificationsLabel" destination="iKj-fp-66z" id="dsj-7u-5wc"/>
                 <outlet property="topView" destination="U8v-Go-Roh" id="ssB-TO-lys"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -60,20 +61,20 @@
                         <constraint firstItem="iKj-fp-66z" firstAttribute="leading" secondItem="U8v-Go-Roh" secondAttribute="leading" constant="20" id="vDZ-Pq-kQL"/>
                     </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jEb-wU-9Xf">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KVg-uM-wlE">
                     <rect key="frame" x="0.0" y="116" width="320" height="364"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </tableView>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="jEb-wU-9Xf" firstAttribute="top" secondItem="U8v-Go-Roh" secondAttribute="bottom" id="5kj-Ng-xR9"/>
-                <constraint firstAttribute="bottom" secondItem="jEb-wU-9Xf" secondAttribute="bottom" id="7vK-dL-d8d"/>
                 <constraint firstItem="U8v-Go-Roh" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" placeholder="YES" id="CUo-n6-5aU"/>
-                <constraint firstAttribute="trailing" secondItem="jEb-wU-9Xf" secondAttribute="trailing" id="Ows-RD-2dP"/>
+                <constraint firstItem="KVg-uM-wlE" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Jtw-dd-6VF"/>
                 <constraint firstItem="U8v-Go-Roh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="cop-vR-C0i"/>
+                <constraint firstAttribute="trailing" secondItem="KVg-uM-wlE" secondAttribute="trailing" id="efM-L4-fbO"/>
                 <constraint firstAttribute="trailing" secondItem="U8v-Go-Roh" secondAttribute="trailing" id="elO-Fc-uAI"/>
-                <constraint firstItem="jEb-wU-9Xf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="uia-g0-oql"/>
+                <constraint firstItem="KVg-uM-wlE" firstAttribute="top" secondItem="U8v-Go-Roh" secondAttribute="bottom" id="fdH-WJ-toS"/>
+                <constraint firstAttribute="bottom" secondItem="KVg-uM-wlE" secondAttribute="bottom" id="r96-RN-dSJ"/>
             </constraints>
         </view>
     </objects>
