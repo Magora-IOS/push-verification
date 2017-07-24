@@ -23,16 +23,19 @@ class Notifications {
     
     func application(
         _ application: UIApplication,
-        didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        didReceiveRemoteNotification userInfo: [AnyHashable : Any],
+        fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
 
-        NSLog("Notification. User info: '%@'", userInfo)
+        NSLog("Notification. User info: '\(userInfo)'")
+
+        completionHandler(.newData)
     }
 
     func application(
         _ application: UIApplication,
         didRegister notificationSettings: UIUserNotificationSettings) {
 
-        NSLog("Notification. Settings changed to '%@'", notificationSettings)
+        NSLog("Notification. Settings changed to '\(notificationSettings)'")
         
         // Register to receive push notifications.
         UIApplication.shared.registerForRemoteNotifications()
