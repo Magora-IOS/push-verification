@@ -1,15 +1,25 @@
 
 import RxSwift
-
 import UIKit
 
 // This class only works on iOS 8-10
 // TODO: Support iOS10+
+
 class Notifications {
 
     // MARK PUBLIC
 
     let deviceToken: Variable<String> = Variable("")
+
+    init() {
+        // Register for push notifications.
+        let pushSettings =
+            UIUserNotificationSettings(types: [.alert, .sound], categories: nil)
+        UIApplication.shared.registerUserNotificationSettings(pushSettings)
+
+        // Default value.
+        self.deviceToken.value = tr(.NotificationsTokenWait)
+    }
     
     func application(
         _ application: UIApplication,
@@ -35,7 +45,7 @@ class Notifications {
         // Convert device token to hexidecimal string.
         let tokenParts = deviceToken.map { String(format: "%02.2hhx", $0) }
         let token = tokenParts.joined()
-        NSLog("Notification. Device token: '%@'", token)
+        NSLog("Notification. Device token: '\(token)'")
         self.deviceToken.value = token
     }
 
@@ -43,19 +53,9 @@ class Notifications {
         _ application: UIApplication,
         didFailToRegisterForRemoteNotificationsWithError error: Error) {
 
-        NSLog("Notification. Failed to register. ERROR: '%@'", error as NSError)
+        NSLog("Notification. Failed to register. ERROR: '\(error)'")
         self.deviceToken.value = tr(.NotificationsTokenError)
     }
 
-    init() {
-        // Register for push notifications.
-        let pushSettings =
-            UIUserNotificationSettings(
-                types: [.alert, .sound],
-                categories: nil)
-        UIApplication.shared.registerUserNotificationSettings(pushSettings)
-        // Default value.
-        self.deviceToken.value = tr(.NotificationsTokenWait)
-    }
 }
 
