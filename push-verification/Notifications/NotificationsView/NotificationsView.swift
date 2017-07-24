@@ -24,14 +24,39 @@ class NotificationsView: UIView, UITableViewDataSource {
 
     @IBOutlet private var tableView: UITableView!
     
+    private func scrollToBottom() {
+        if (self.notifications.value.count > 0) {
+            let lastRow =
+                IndexPath(
+                    row: self.notifications.value.count - 1,
+                    section: 0)
+            self.tableView.scrollToRow(
+                at: lastRow,
+                at: .bottom,
+                animated: true)
+        }
+    }
+
     private func setupNotificationsView() {
         self.setupTableView()
 
         // Refresh table view when items change.
         self.notifications
             .asObservable()
+            .map { [unowned self] _ in
+                return self.notifications.value.count > 0
+            }
             .subscribe(onNext: { [unowned self] _ in
-                self.tableView.reloadData()
+                //self.tableView.reloadData()
+                let lastRow =
+                    IndexPath(
+                        row: self.notifications.value.count - 1,
+                        section: 0)
+                NSLog("latRow: '\(lastRow.row)'")
+                self.tableView.beginUpdates()
+                self.tableView.insertRows(at: [lastRow], with: .none)
+                self.tableView.endUpdates()
+                self.scrollToBottom()
             })
             .disposed(by: self.disposeBag)
     }
@@ -64,6 +89,8 @@ class NotificationsView: UIView, UITableViewDataSource {
     func tableView(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        NSLog("cellForRow(\(indexPath.row))")
 
         let cell =
             tableView.dequeueReusableCell(
