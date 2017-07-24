@@ -12,7 +12,9 @@ class NotificationsView: UIView {
 
     // MARK: - PRIVATE
 
-    func setupNotificationsView() {
+    @IBOutlet private var tableView: UITableView!
+    
+    private func setupNotificationsView() {
         NSLog("NotificationsView. setup")
     }
 

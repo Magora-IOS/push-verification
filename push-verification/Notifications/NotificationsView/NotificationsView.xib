@@ -14,7 +14,22 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="NotificationsView" customModule="push_verification" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" red="0.92502796649999997" green="0.085752829909999995" blue="0.28591215609999998" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZFT-zn-Tzy">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="ZFT-zn-Tzy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="X7d-KG-Npi"/>
+                <constraint firstAttribute="trailing" secondItem="ZFT-zn-Tzy" secondAttribute="trailing" id="aHN-Dm-Ove"/>
+                <constraint firstItem="ZFT-zn-Tzy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="pOx-ut-cE5"/>
+                <constraint firstAttribute="bottom" secondItem="ZFT-zn-Tzy" secondAttribute="bottom" id="t7T-dr-WCX"/>
+            </constraints>
+            <connections>
+                <outlet property="tableView" destination="ZFT-zn-Tzy" id="Kje-Rz-sF6"/>
+            </connections>
         </view>
     </objects>
 </document>
