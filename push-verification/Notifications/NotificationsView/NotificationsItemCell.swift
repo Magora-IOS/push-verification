@@ -28,7 +28,7 @@ class NotificationsItemCell: UITableViewCell {
         // Format date.
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .short
+        dateFormatter.timeStyle = .medium
         self.dateLabel?.text = dateFormatter.string(from: self.date)
     }
 
