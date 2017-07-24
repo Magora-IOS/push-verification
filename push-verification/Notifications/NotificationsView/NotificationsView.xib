@@ -9,29 +9,12 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NotificationsView" customModule="push_verification" customModuleProvider="target">
-            <connections>
-                <outlet property="tableView" destination="jEb-wU-9Xf" id="13A-cD-XPD"/>
-                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
-            </connections>
-        </placeholder>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="NotificationsView" customModule="push_verification" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jEb-wU-9Xf">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </tableView>
-            </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-            <constraints>
-                <constraint firstAttribute="bottom" secondItem="jEb-wU-9Xf" secondAttribute="bottom" id="7vK-dL-d8d"/>
-                <constraint firstAttribute="trailing" secondItem="jEb-wU-9Xf" secondAttribute="trailing" id="Ows-RD-2dP"/>
-                <constraint firstItem="jEb-wU-9Xf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="uia-g0-oql"/>
-                <constraint firstItem="jEb-wU-9Xf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="yrv-kw-4b2"/>
-            </constraints>
+            <color key="backgroundColor" red="0.92502796649999997" green="0.085752829909999995" blue="0.28591215609999998" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
         </view>
     </objects>
 </document>

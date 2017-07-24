@@ -28,7 +28,7 @@ class NotificationsVC: UIViewController {
     @IBOutlet private var deviceTokenTextView: UITextView!
     @IBOutlet private var notificationsLabel: UILabel!
     
-    //private var notificationsView: NotificationsView!
+    private var notificationsView: NotificationsView!
     @IBOutlet private var notificationsContainerView: UIView!
 
     private func setupNotificationsVC() {
@@ -49,20 +49,25 @@ class NotificationsVC: UIViewController {
         // Create and embed NotificationsView.
         //let notificationsViewNib = UINib(nibName: Const.NotificationsView, bundle: nil)
         //let notificationsViewNib = Bundle.main.loadNibNamed(Const.NotificationsView, owner: NotificationsView, options: nil)
-        //self.notificationsView = notificationsView.loadFromNib() as! NotificationsView
-        /*let nib = UINib(nibName: "NotificationsView", bundle: nil)
-        self.notificationsView = nib.instantiate(withOwner: nil, options: nil).first as! NotificationsView
-        */
-        /*
-        let nv : NotificationsView? = Bundle.main.loadNibNamed("NotificationsView", owner: self, options: nil)?.first as? NotificationsView
+        //let nib = UINib(nibName: "NotificationsView", bundle: nil)
+        //NSLog("NotificationsVC. nib: '\(nib)'")
+        //self.notificationsView = nib.instantiate(withOwner: nil, options: nil).first as! NotificationsView
         
-        NSLog("NotificationsView: '%p'", nv ?? "nil")
-        */
-        /*
-        self.notificationsView.snp.makeConstraints { (make) -> Void in
+        self.notificationsView = NotificationsView.instantiateFromNib()
+        
+        //let sv = SampleView.instantiateFromNib()
+        
+        //let nv = Bundle.main.loadNibNamed("NotificationsView", owner: nil, options: nil)?.first as? NotificationsView
+        
+        //NSLog("NotificationsView: '%p'", nv ?? "nil")
+
+        self.notificationsContainerView.addSubview(self.notificationsView)
+        
+        
+        self.notificationsView.snp.makeConstraints { [unowned self] (make) -> Void in
             make.edges.equalTo(self.notificationsContainerView)
         }
- */
+        
         /*
         // Make sure topView's top is anchored to topLayoutGuide's bottom.
         self.topView.snp.makeConstraints { (make) -> Void in

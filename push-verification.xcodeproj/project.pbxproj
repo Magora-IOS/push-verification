@@ -11,6 +11,8 @@
 		1335659E1F14B1B90094A823 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1335659D1F14B1B90094A823 /* AppDelegate.swift */; };
 		133565A51F14B1B90094A823 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 133565A41F14B1B90094A823 /* Assets.xcassets */; };
 		133565A81F14B1B90094A823 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 133565A61F14B1B90094A823 /* LaunchScreen.storyboard */; };
+		1399D6151F25E54900D5E9F0 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1399D6131F25E54900D5E9F0 /* NotificationsView.swift */; };
+		1399D6161F25E54900D5E9F0 /* NotificationsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1399D6141F25E54900D5E9F0 /* NotificationsView.xib */; };
 		13DE37F41F18876900A4961D /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DE37F31F18876900A4961D /* Notifications.swift */; };
 		13DE37F81F18877C00A4961D /* NotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DE37F61F18877C00A4961D /* NotificationsVC.swift */; };
 		13DE37F91F18877C00A4961D /* NotificationsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13DE37F71F18877C00A4961D /* NotificationsVC.xib */; };
@@ -27,6 +29,8 @@
 		133565A71F14B1B90094A823 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		133565A91F14B1B90094A823 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		133565AF1F14B9BA0094A823 /* push-verification.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "push-verification.entitlements"; sourceTree = "<group>"; };
+		1399D6131F25E54900D5E9F0 /* NotificationsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
+		1399D6141F25E54900D5E9F0 /* NotificationsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationsView.xib; sourceTree = "<group>"; };
 		13DE37F31F18876900A4961D /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		13DE37F61F18877C00A4961D /* NotificationsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsVC.swift; sourceTree = "<group>"; };
 		13DE37F71F18877C00A4961D /* NotificationsVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationsVC.xib; sourceTree = "<group>"; };
@@ -92,9 +96,19 @@
 			path = "push-verification";
 			sourceTree = "<group>";
 		};
+		1399D60A1F25D10800D5E9F0 /* NotificationsView */ = {
+			isa = PBXGroup;
+			children = (
+				1399D6131F25E54900D5E9F0 /* NotificationsView.swift */,
+				1399D6141F25E54900D5E9F0 /* NotificationsView.xib */,
+			);
+			path = NotificationsView;
+			sourceTree = "<group>";
+		};
 		13DE37F21F18875000A4961D /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
+				1399D60A1F25D10800D5E9F0 /* NotificationsView */,
 				13DE37F51F18876C00A4961D /* NotificationsVC */,
 				13DE37F31F18876900A4961D /* Notifications.swift */,
 			);
@@ -202,6 +216,7 @@
 				133565A81F14B1B90094A823 /* LaunchScreen.storyboard in Resources */,
 				13DE38001F18AE6C00A4961D /* Localizable.strings in Resources */,
 				133565A51F14B1B90094A823 /* Assets.xcassets in Resources */,
+				1399D6161F25E54900D5E9F0 /* NotificationsView.xib in Resources */,
 				13DE37F91F18877C00A4961D /* NotificationsVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -266,6 +281,7 @@
 				13DE37F81F18877C00A4961D /* NotificationsVC.swift in Sources */,
 				132F40491F25CA060010A23C /* UIView+NibFile.swift in Sources */,
 				1335659E1F14B1B90094A823 /* AppDelegate.swift in Sources */,
+				1399D6151F25E54900D5E9F0 /* NotificationsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

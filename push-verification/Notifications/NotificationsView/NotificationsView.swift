@@ -1,55 +1,27 @@
 
-import RxCocoa
-import RxSwift
 import UIKit
 
 class NotificationsView: UIView {
 
-    // MARK: PUBLIC
+    // MARK: - PUBLIC
 
-    //let deviceToken: Variable<String> = Variable("")
+    class func instantiateFromNib() -> NotificationsView {
+        let nib = UINib(nibName: "NotificationsView", bundle: nil)
+        let arr = nib.instantiate(withOwner: self, options: nil)
+        let view = arr.first
+        return view as! NotificationsView
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setupNotificationsView()
     }
 
+    // MARK: - PRIVATE
 
-    // MARK: PRIVATE
-    
-    @IBOutlet private var tableView: UITableView!
-
-    private let disposeBag = DisposeBag()
-    
-    private func setupNotificationsView() {
-        /*
-        self.setupTitles()
-        self.setupTopOffset()
-        self.setupDeviceToken()
-        */
+    func setupNotificationsView() {
+        NSLog("NotificationsView. setup")
     }
 
-    /*
-    private func setupDeviceToken() {
-        self.deviceToken
-            .asObservable()
-            .bind(to: self.deviceTokenTextView.rx.text)
-            .disposed(by: disposeBag)
-    }
-
-    private func setupTitles() {
-        self.navigationItem.title = tr(.NotificationsVCTitle)
-        self.deviceTokenLabel.text = tr(.NotificationsVCTokenTitle)
-        self.notificationsLabel.text = tr(.NotificationsVCNotificationsTitle)
-    }
-
-    private func setupTopOffset() {
-        // Make sure topView's top is anchored to topLayoutGuide's bottom.
-        self.topView.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(self.topLayoutGuide.snp.bottom)
-        }
-    }
-    */
-    
 }
 
