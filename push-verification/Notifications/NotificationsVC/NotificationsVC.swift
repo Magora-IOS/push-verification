@@ -48,6 +48,9 @@ class NotificationsVC: UIViewController {
     private func setupNotifications() {
         self.notificationsView = NotificationsView.loadFromNib()
         self.notificationsContainerView.embeddedView = self.notificationsView
+
+        // TODO: REMOVE
+        self.notificationsView.items.value = ["abc", "def", "ghi"]
     }
 
     private func setupTitles() {
