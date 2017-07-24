@@ -2,8 +2,12 @@
 import UIKit
 
 public extension UIView {
-    func loadFromNibX() -> UIView? {
-        return Bundle.main.loadNibNamed(String(describing: self), owner: self, options: nil)?.first as? UIView
+
+    class func loadFromNib(nibName: String) -> UIView? {
+        let nib = UINib(nibName: nibName, bundle: nil)
+        let objects = nib.instantiate(withOwner: nil, options: nil)
+        return objects.first as? UIView
     }
+
 }
 

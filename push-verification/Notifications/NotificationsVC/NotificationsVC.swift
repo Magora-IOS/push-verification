@@ -47,19 +47,8 @@ class NotificationsVC: UIViewController {
 
     private func setupNotifications() {
         // Create and embed NotificationsView.
-        //let notificationsViewNib = UINib(nibName: Const.NotificationsView, bundle: nil)
-        //let notificationsViewNib = Bundle.main.loadNibNamed(Const.NotificationsView, owner: NotificationsView, options: nil)
-        //let nib = UINib(nibName: "NotificationsView", bundle: nil)
-        //NSLog("NotificationsVC. nib: '\(nib)'")
-        //self.notificationsView = nib.instantiate(withOwner: nil, options: nil).first as! NotificationsView
+        self.notificationsView = NotificationsView.loadFromNib(nibName: "NotificationsView") as! NotificationsView
         
-        self.notificationsView = NotificationsView.instantiateFromNib()
-        
-        //let sv = SampleView.instantiateFromNib()
-        
-        //let nv = Bundle.main.loadNibNamed("NotificationsView", owner: nil, options: nil)?.first as? NotificationsView
-        
-        //NSLog("NotificationsView: '%p'", nv ?? "nil")
 
         self.notificationsContainerView.addSubview(self.notificationsView)
         
@@ -67,13 +56,6 @@ class NotificationsVC: UIViewController {
         self.notificationsView.snp.makeConstraints { [unowned self] (make) -> Void in
             make.edges.equalTo(self.notificationsContainerView)
         }
-        
-        /*
-        // Make sure topView's top is anchored to topLayoutGuide's bottom.
-        self.topView.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(self.topLayoutGuide.snp.bottom)
-        }
-        */
     }
 
     private func setupTitles() {
