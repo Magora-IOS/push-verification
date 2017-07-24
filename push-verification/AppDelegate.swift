@@ -42,7 +42,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.notifications.deviceToken
             .asObservable()
             .bind(to: self.notificationsVC.deviceToken)
-            .disposed(by: disposeBag)
+            .disposed(by: self.disposeBag)
+
+        // Sync notifications.
+        self.notifications.notifications
+            .asObservable()
+            .bind(to: self.notificationsVC.notifications)
+            .disposed(by: self.disposeBag)
     }
 
     // MARK NOTIFICATIONS

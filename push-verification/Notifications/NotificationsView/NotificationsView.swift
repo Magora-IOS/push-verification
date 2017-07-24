@@ -6,7 +6,7 @@ class NotificationsView: UIView, UITableViewDataSource {
 
     // MARK: - PUBLIC
 
-    let items: Variable<[String]> = Variable([])
+    let notifications: Variable<[NotificationsItem]> = Variable([])
 
     enum Const {
         static let NotificationsItemCell = "NotificationsItemCell"
@@ -28,9 +28,9 @@ class NotificationsView: UIView, UITableViewDataSource {
         self.setupTableView()
 
         // Refresh table view when items change.
-        self.items
+        self.notifications
             .asObservable()
-            .subscribe(onNext: { [unowned self] items in
+            .subscribe(onNext: { [unowned self] _ in
                 self.tableView.reloadData()
             })
             .disposed(by: self.disposeBag)
@@ -58,7 +58,7 @@ class NotificationsView: UIView, UITableViewDataSource {
         _ tableView: UITableView,
         numberOfRowsInSection section: Int) -> Int {
 
-        return self.items.value.count
+        return self.notifications.value.count
     }
 
     func tableView(
@@ -70,7 +70,9 @@ class NotificationsView: UIView, UITableViewDataSource {
                 withIdentifier: Const.NotificationsItemCell,
                 for: indexPath)
             as! NotificationsItemCell
-        cell.title = self.items.value[indexPath.row]
+        let item = self.notifications.value[indexPath.row]
+        cell.date = item.date
+        cell.payload = item.payload
         return cell
     }
 

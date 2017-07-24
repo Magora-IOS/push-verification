@@ -10,6 +10,8 @@ class NotificationsVC: UIViewController {
 
     let deviceToken: Variable<String> = Variable("")
 
+    let notifications: Variable<[NotificationsItem]> = Variable([])
+
     enum Const {
         static let NotificationsView = "NotificationsView"
     }
@@ -42,15 +44,18 @@ class NotificationsVC: UIViewController {
         self.deviceToken
             .asObservable()
             .bind(to: self.deviceTokenTextView.rx.text)
-            .disposed(by: disposeBag)
+            .disposed(by: self.disposeBag)
     }
 
     private func setupNotifications() {
         self.notificationsView = NotificationsView.loadFromNib()
         self.notificationsContainerView.embeddedView = self.notificationsView
 
-        // TODO: REMOVE
-        self.notificationsView.items.value = ["abc", "def", "ghi"]
+        // Sync items.
+        self.notifications
+            .asObservable()
+            .bind(to: self.notificationsView.notifications)
+            .disposed(by: self.disposeBag)
     }
 
     private func setupTitles() {

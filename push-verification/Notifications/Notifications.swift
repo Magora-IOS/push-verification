@@ -10,6 +10,7 @@ class Notifications {
     // MARK PUBLIC
 
     let deviceToken: Variable<String> = Variable("")
+    let notifications: Variable<[NotificationsItem]> = Variable([])
 
     init() {
         // Register for push notifications.
@@ -27,6 +28,17 @@ class Notifications {
         fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
 
         NSLog("Notification. User info: '\(userInfo)'")
+
+        var item = NotificationsItem()
+        
+        // TODO: Move prettification to Item
+        
+        let data = try! JSONSerialization.data(withJSONObject: userInfo, options: .prettyPrinted)
+        let prettyPayload = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
+        item.payload =  prettyPayload! as String
+        
+        //item.payload = userInfo
+        notifications.value.append(item)
 
         completionHandler(.newData)
     }
