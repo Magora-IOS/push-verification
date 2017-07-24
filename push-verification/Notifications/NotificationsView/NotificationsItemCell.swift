@@ -1,7 +1,7 @@
 
 import UIKit
 
-class NotificationsCell: UITableViewCell {
+class NotificationsItemCell: UITableViewCell {
 
     // MARK: - TITLE
     
@@ -22,7 +22,7 @@ class NotificationsCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.setupNotificationsCell()
+        self.setupNotificationsItemCell()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -32,7 +32,7 @@ class NotificationsCell: UITableViewCell {
 
     // MARK: - PRIVATE
 
-    private func setupNotificationsCell() {
+    private func setupNotificationsItemCell() {
         self.updateTitle()
     }
 

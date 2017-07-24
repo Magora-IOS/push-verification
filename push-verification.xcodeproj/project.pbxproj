@@ -14,8 +14,8 @@
 		1399D6151F25E54900D5E9F0 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1399D6131F25E54900D5E9F0 /* NotificationsView.swift */; };
 		1399D6161F25E54900D5E9F0 /* NotificationsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1399D6141F25E54900D5E9F0 /* NotificationsView.xib */; };
 		1399D6181F25EFA900D5E9F0 /* UIView+Embed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1399D6171F25EFA900D5E9F0 /* UIView+Embed.swift */; };
-		1399D61B1F25F9B300D5E9F0 /* NotificationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1399D6191F25F9B300D5E9F0 /* NotificationsCell.swift */; };
-		1399D61C1F25F9B300D5E9F0 /* NotificationsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1399D61A1F25F9B300D5E9F0 /* NotificationsCell.xib */; };
+		1399D6231F26078B00D5E9F0 /* NotificationsItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1399D6211F26078A00D5E9F0 /* NotificationsItemCell.swift */; };
+		1399D6241F26078B00D5E9F0 /* NotificationsItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1399D6221F26078B00D5E9F0 /* NotificationsItemCell.xib */; };
 		13DE37F41F18876900A4961D /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DE37F31F18876900A4961D /* Notifications.swift */; };
 		13DE37F81F18877C00A4961D /* NotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DE37F61F18877C00A4961D /* NotificationsVC.swift */; };
 		13DE37F91F18877C00A4961D /* NotificationsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13DE37F71F18877C00A4961D /* NotificationsVC.xib */; };
@@ -35,8 +35,8 @@
 		1399D6131F25E54900D5E9F0 /* NotificationsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
 		1399D6141F25E54900D5E9F0 /* NotificationsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationsView.xib; sourceTree = "<group>"; };
 		1399D6171F25EFA900D5E9F0 /* UIView+Embed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Embed.swift"; sourceTree = "<group>"; };
-		1399D6191F25F9B300D5E9F0 /* NotificationsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsCell.swift; sourceTree = "<group>"; };
-		1399D61A1F25F9B300D5E9F0 /* NotificationsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationsCell.xib; sourceTree = "<group>"; };
+		1399D6211F26078A00D5E9F0 /* NotificationsItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsItemCell.swift; sourceTree = "<group>"; };
+		1399D6221F26078B00D5E9F0 /* NotificationsItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationsItemCell.xib; sourceTree = "<group>"; };
 		13DE37F31F18876900A4961D /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		13DE37F61F18877C00A4961D /* NotificationsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsVC.swift; sourceTree = "<group>"; };
 		13DE37F71F18877C00A4961D /* NotificationsVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationsVC.xib; sourceTree = "<group>"; };
@@ -106,8 +106,8 @@
 		1399D60A1F25D10800D5E9F0 /* NotificationsView */ = {
 			isa = PBXGroup;
 			children = (
-				1399D6191F25F9B300D5E9F0 /* NotificationsCell.swift */,
-				1399D61A1F25F9B300D5E9F0 /* NotificationsCell.xib */,
+				1399D6211F26078A00D5E9F0 /* NotificationsItemCell.swift */,
+				1399D6221F26078B00D5E9F0 /* NotificationsItemCell.xib */,
 				1399D6131F25E54900D5E9F0 /* NotificationsView.swift */,
 				1399D6141F25E54900D5E9F0 /* NotificationsView.xib */,
 			);
@@ -223,8 +223,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				133565A81F14B1B90094A823 /* LaunchScreen.storyboard in Resources */,
+				1399D6241F26078B00D5E9F0 /* NotificationsItemCell.xib in Resources */,
 				13DE38001F18AE6C00A4961D /* Localizable.strings in Resources */,
-				1399D61C1F25F9B300D5E9F0 /* NotificationsCell.xib in Resources */,
 				133565A51F14B1B90094A823 /* Assets.xcassets in Resources */,
 				1399D6161F25E54900D5E9F0 /* NotificationsView.xib in Resources */,
 				13DE37F91F18877C00A4961D /* NotificationsVC.xib in Resources */,
@@ -290,10 +290,10 @@
 				13DE37F41F18876900A4961D /* Notifications.swift in Sources */,
 				13DE37F81F18877C00A4961D /* NotificationsVC.swift in Sources */,
 				132F40491F25CA060010A23C /* UIView+NibFile.swift in Sources */,
-				1399D61B1F25F9B300D5E9F0 /* NotificationsCell.swift in Sources */,
 				1335659E1F14B1B90094A823 /* AppDelegate.swift in Sources */,
 				1399D6181F25EFA900D5E9F0 /* UIView+Embed.swift in Sources */,
 				1399D6151F25E54900D5E9F0 /* NotificationsView.swift in Sources */,
+				1399D6231F26078B00D5E9F0 /* NotificationsItemCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

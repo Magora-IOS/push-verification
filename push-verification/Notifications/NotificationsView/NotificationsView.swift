@@ -9,8 +9,8 @@ class NotificationsView: UIView, UITableViewDataSource {
     let items: Variable<[String]> = Variable([])
 
     enum Const {
-        static let NotificationsCell = "NotificationsCell"
-        static let NotificationsCellEstimatedHeight : CGFloat = 60
+        static let NotificationsItemCell = "NotificationsItemCell"
+        static let NotificationsItemCellEstimatedHeight : CGFloat = 60
     }
 
     override func awakeFromNib() {
@@ -38,17 +38,17 @@ class NotificationsView: UIView, UITableViewDataSource {
 
     private func setupTableView() {
         // Register cells.
-        let cellNib = UINib(nibName: Const.NotificationsCell, bundle: nil)
+        let cellNib = UINib(nibName: Const.NotificationsItemCell, bundle: nil)
         self.tableView.register(
             cellNib,
-            forCellReuseIdentifier: Const.NotificationsCell)
+            forCellReuseIdentifier: Const.NotificationsItemCell)
 
         self.tableView.dataSource = self
         
         // Make sure cells are self-sizing.
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight =
-            Const.NotificationsCellEstimatedHeight
+            Const.NotificationsItemCellEstimatedHeight
 
     }
 
@@ -67,9 +67,9 @@ class NotificationsView: UIView, UITableViewDataSource {
 
         let cell =
             tableView.dequeueReusableCell(
-                withIdentifier: Const.NotificationsCell,
+                withIdentifier: Const.NotificationsItemCell,
                 for: indexPath)
-            as! NotificationsCell
+            as! NotificationsItemCell
         cell.title = self.items.value[indexPath.row]
         return cell
     }
