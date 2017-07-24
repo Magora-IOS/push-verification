@@ -46,13 +46,8 @@ class NotificationsVC: UIViewController {
     }
 
     private func setupNotifications() {
-        // Create and embed NotificationsView.
         self.notificationsView = NotificationsView.loadFromNib()
-
-        self.notificationsContainerView.addSubview(self.notificationsView)
-        self.notificationsView.snp.makeConstraints { [unowned self] (make) -> Void in
-            make.edges.equalTo(self.notificationsContainerView)
-        }
+        self.notificationsContainerView.embeddedView = self.notificationsView
     }
 
     private func setupTitles() {
