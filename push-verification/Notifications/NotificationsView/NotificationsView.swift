@@ -2,7 +2,7 @@
 import RxSwift
 import UIKit
 
-class NotificationsView: UIView, UITableViewDataSource {
+class NotificationsView: UIView, UITableViewDataSource, UITableViewDelegate {
 
     // MARK: - PUBLIC
 
@@ -10,9 +10,7 @@ class NotificationsView: UIView, UITableViewDataSource {
 
     enum Const {
         static let NotificationsItemCell = "NotificationsItemCell"
-        //static let NotificationsItemCellEstimatedHeight : CGFloat = 60
-        static let NotificationsItemCellEstimatedHeight : CGFloat = 160
-
+        static let NotificationsItemCellEstimatedHeight : CGFloat = 100
     }
 
     override func awakeFromNib() {
@@ -25,9 +23,9 @@ class NotificationsView: UIView, UITableViewDataSource {
     private let disposeBag = DisposeBag()
 
     @IBOutlet private var tableView: UITableView!
-    
+
     private func scrollToBottom() {
-        if (self.notifications.value.count > 0) {
+        if (!self.notifications.value.isEmpty) {
             let lastRow =
                 IndexPath(
                     row: self.notifications.value.count - 1,
@@ -45,24 +43,18 @@ class NotificationsView: UIView, UITableViewDataSource {
         // Refresh table view when items change.
         self.notifications
             .asObservable()
-            .map { [unowned self] _ in
-                return self.notifications.value.count > 0
-            }
+            .map { return !$0.isEmpty }
             .subscribe(onNext: { [unowned self] _ in
-                //self.tableView.reloadData()
-                
+                // Insert new item in the last row.
                 let lastRow =
                     IndexPath(
                         row: self.notifications.value.count - 1,
                         section: 0)
-                NSLog("latRow: '\(lastRow.row)'")
                 self.tableView.beginUpdates()
                 self.tableView.insertRows(at: [lastRow], with: .none)
                 self.tableView.endUpdates()
                 
-                //DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: { [unowned self] _ in
-                   self.scrollToBottom()
-                //})
+                self.scrollToBottom()
                 
             })
             .disposed(by: self.disposeBag)
@@ -76,22 +68,49 @@ class NotificationsView: UIView, UITableViewDataSource {
             forCellReuseIdentifier: Const.NotificationsItemCell)
 
         self.tableView.dataSource = self
+        self.tableView.delegate = self
         
-        // Make sure cells are self-sizing.
-        //self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.rowHeight = Const.NotificationsItemCellEstimatedHeight
-        self.tableView.estimatedRowHeight =
-            Const.NotificationsItemCellEstimatedHeight
+        self.setupTableViewCellHeight()
+    }
+    
+    // MARK: - TABLE VIEW CELL HEIGHT
+    
+    private var cachedCellHeights = [IndexPath : CGFloat]()
 
+    func setupTableViewCellHeight() {
+        // Make cells self-sizing.
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+    }
+    
+    func tableView(
+        _ tableView: UITableView,
+        estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+
+        // Retrieve cell height if it has been visible at least once.
+        if let height = self.cachedCellHeights[indexPath] {
+            return height
+        }
+        // The first display uses automatic counting.
+        else {
+            return UITableViewAutomaticDimension
+        }
     }
 
+    func tableView(
+        _ tableView: UITableView,
+        willDisplay cell: UITableViewCell,
+        forRowAt indexPath: IndexPath) {
+
+        // Cache cell height.
+        self.cachedCellHeights[indexPath] = cell.frame.size.height
+    }
+        
     // MARK: - TABLE VIEW DELEGATE
 
     func tableView(
         _ tableView: UITableView,
         numberOfRowsInSection section: Int) -> Int {
         
-        NSLog("numberOfRows: '\(self.notifications.value.count)'")
         return self.notifications.value.count
     }
 
