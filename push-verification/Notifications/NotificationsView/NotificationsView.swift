@@ -10,7 +10,9 @@ class NotificationsView: UIView, UITableViewDataSource {
 
     enum Const {
         static let NotificationsItemCell = "NotificationsItemCell"
-        static let NotificationsItemCellEstimatedHeight : CGFloat = 60
+        //static let NotificationsItemCellEstimatedHeight : CGFloat = 60
+        static let NotificationsItemCellEstimatedHeight : CGFloat = 160
+
     }
 
     override func awakeFromNib() {
@@ -48,6 +50,7 @@ class NotificationsView: UIView, UITableViewDataSource {
             }
             .subscribe(onNext: { [unowned self] _ in
                 //self.tableView.reloadData()
+                
                 let lastRow =
                     IndexPath(
                         row: self.notifications.value.count - 1,
@@ -56,7 +59,11 @@ class NotificationsView: UIView, UITableViewDataSource {
                 self.tableView.beginUpdates()
                 self.tableView.insertRows(at: [lastRow], with: .none)
                 self.tableView.endUpdates()
-                self.scrollToBottom()
+                
+                //DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: { [unowned self] _ in
+                   self.scrollToBottom()
+                //})
+                
             })
             .disposed(by: self.disposeBag)
     }
@@ -71,7 +78,8 @@ class NotificationsView: UIView, UITableViewDataSource {
         self.tableView.dataSource = self
         
         // Make sure cells are self-sizing.
-        self.tableView.rowHeight = UITableViewAutomaticDimension
+        //self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.rowHeight = Const.NotificationsItemCellEstimatedHeight
         self.tableView.estimatedRowHeight =
             Const.NotificationsItemCellEstimatedHeight
 
@@ -82,7 +90,8 @@ class NotificationsView: UIView, UITableViewDataSource {
     func tableView(
         _ tableView: UITableView,
         numberOfRowsInSection section: Int) -> Int {
-
+        
+        NSLog("numberOfRows: '\(self.notifications.value.count)'")
         return self.notifications.value.count
     }
 
