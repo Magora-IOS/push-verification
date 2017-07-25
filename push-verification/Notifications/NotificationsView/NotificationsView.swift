@@ -74,6 +74,7 @@ class NotificationsView: UIView, UITableViewDataSource, UITableViewDelegate {
     }
     
     // MARK: - TABLE VIEW CELL HEIGHT
+    // Cell height caching: https://stackoverflow.com/a/33397350/3404710
     
     private var cachedCellHeights = [IndexPath : CGFloat]()
 
