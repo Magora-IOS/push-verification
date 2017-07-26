@@ -1,4 +1,5 @@
 
+import CoreData
 import RxSwift
 import UIKit
 
@@ -12,7 +13,7 @@ class Notifications {
     let deviceToken: Variable<String> = Variable("")
     let notifications: Variable<[NotificationsItem]> = Variable([])
 
-    init() {
+    init(_ context: NSManagedObjectContext) {
         // Register for push notifications.
         let pushSettings =
             UIUserNotificationSettings(types: [.alert, .sound], categories: nil)
@@ -20,6 +21,42 @@ class Notifications {
 
         // Default value.
         self.deviceToken.value = tr(.NotificationsTokenWait)
+
+
+
+        // Get previously saved entities.
+
+        let fetchRequest =
+            NSFetchRequest<NSManagedObject>(entityName: "Notification")
+
+        do {
+            var notifications = try context.fetch(fetchRequest)
+            // TODO: Convert NSManagedObject to NotificationItem.
+            for notification in notifications {
+                NSLog("Notification: '\(notification)'")
+            }
+        } catch let error as NSError {
+            NSLog("Could not load notifications. ERROR: '\(error)' '\(error.userInfo)'");
+        }
+
+
+        // Save new entity.
+
+        let entity =
+            NSEntityDescription.entity(
+                forEntityName: "Notification",
+                in: context)
+        let notification = NSManagedObject(entity: entity!, insertInto: context)
+        notification.setValue("sample payload {}", forKeyPath: "payload")
+        notification.setValue(Date(), forKeyPath: "date")
+
+        do {
+            try context.save()
+            // TODO: append item to internal representation.
+        } catch let error as NSError {
+            NSLog("Could not save notification. ERROR: '\(error)' '\(error.userInfo)'");
+        }
+
     }
     
     func application(

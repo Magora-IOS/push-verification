@@ -17,6 +17,7 @@
 		1399D6231F26078B00D5E9F0 /* NotificationsItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1399D6211F26078A00D5E9F0 /* NotificationsItemCell.swift */; };
 		1399D6241F26078B00D5E9F0 /* NotificationsItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1399D6221F26078B00D5E9F0 /* NotificationsItemCell.xib */; };
 		1399D6261F26129800D5E9F0 /* NotificationsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1399D6251F26129800D5E9F0 /* NotificationsItem.swift */; };
+		1399D6291F285D6F00D5E9F0 /* notifications.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1399D6271F285D6F00D5E9F0 /* notifications.xcdatamodeld */; };
 		13DE37F41F18876900A4961D /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DE37F31F18876900A4961D /* Notifications.swift */; };
 		13DE37F81F18877C00A4961D /* NotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DE37F61F18877C00A4961D /* NotificationsVC.swift */; };
 		13DE37F91F18877C00A4961D /* NotificationsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13DE37F71F18877C00A4961D /* NotificationsVC.xib */; };
@@ -39,6 +40,8 @@
 		1399D6211F26078A00D5E9F0 /* NotificationsItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsItemCell.swift; sourceTree = "<group>"; };
 		1399D6221F26078B00D5E9F0 /* NotificationsItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationsItemCell.xib; sourceTree = "<group>"; };
 		1399D6251F26129800D5E9F0 /* NotificationsItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsItem.swift; sourceTree = "<group>"; };
+		1399D6281F285D6F00D5E9F0 /* notifications.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = notifications.xcdatamodel; sourceTree = "<group>"; };
+		1399D64B1F287DB800D5E9F0 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		13DE37F31F18876900A4961D /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		13DE37F61F18877C00A4961D /* NotificationsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsVC.swift; sourceTree = "<group>"; };
 		13DE37F71F18877C00A4961D /* NotificationsVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationsVC.xib; sourceTree = "<group>"; };
@@ -101,6 +104,7 @@
 				133565A61F14B1B90094A823 /* LaunchScreen.storyboard */,
 				133565A91F14B1B90094A823 /* Info.plist */,
 				13DE37FE1F18AE6C00A4961D /* Localizable.strings */,
+				1399D6271F285D6F00D5E9F0 /* notifications.xcdatamodeld */,
 			);
 			path = "push-verification";
 			sourceTree = "<group>";
@@ -148,6 +152,7 @@
 		48B96AC1DC0D60A5D575ABEB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1399D64B1F287DB800D5E9F0 /* CoreData.framework */,
 				DB31147A93EA9A53C16D6160 /* Pods_push_verification.framework */,
 			);
 			name = Frameworks;
@@ -293,6 +298,7 @@
 				1399D6261F26129800D5E9F0 /* NotificationsItem.swift in Sources */,
 				13DE37F41F18876900A4961D /* Notifications.swift in Sources */,
 				13DE37F81F18877C00A4961D /* NotificationsVC.swift in Sources */,
+				1399D6291F285D6F00D5E9F0 /* notifications.xcdatamodeld in Sources */,
 				132F40491F25CA060010A23C /* UIView+NibFile.swift in Sources */,
 				1335659E1F14B1B90094A823 /* AppDelegate.swift in Sources */,
 				1399D6181F25EFA900D5E9F0 /* UIView+Embed.swift in Sources */,
@@ -427,6 +433,7 @@
 				CODE_SIGN_ENTITLEMENTS = "push-verification/push-verification.entitlements";
 				DEVELOPMENT_TEAM = 65B5B68C2U;
 				INFOPLIST_FILE = "push-verification/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.magora-team.push-verification";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -442,6 +449,7 @@
 				CODE_SIGN_ENTITLEMENTS = "push-verification/push-verification.entitlements";
 				DEVELOPMENT_TEAM = 65B5B68C2U;
 				INFOPLIST_FILE = "push-verification/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.magora-team.push-verification";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -471,6 +479,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1399D6271F285D6F00D5E9F0 /* notifications.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1399D6281F285D6F00D5E9F0 /* notifications.xcdatamodel */,
+			);
+			currentVersion = 1399D6281F285D6F00D5E9F0 /* notifications.xcdatamodel */;
+			path = notifications.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 133565921F14B1B90094A823 /* Project object */;
 }
