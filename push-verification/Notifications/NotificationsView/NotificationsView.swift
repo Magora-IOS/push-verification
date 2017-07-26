@@ -10,7 +10,7 @@ class NotificationsView: UIView, UITableViewDataSource, UITableViewDelegate {
 
     enum Const {
         static let NotificationsItemCell = "NotificationsItemCell"
-        static let NotificationsItemCellEstimatedHeight : CGFloat = 100
+        static let NotificationsItemCellEstimatedHeight: CGFloat = 100
     }
 
     override func awakeFromNib() {
