@@ -11,6 +11,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    enum Const {
+        static let StoreName = "notifications"
+    }
+
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -27,15 +31,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private var notificationsVC: NotificationsVC!
     private var notifications: Notifications!
+    private var notificationsStore: NotificationsStore!
     
     private let disposeBag = DisposeBag()
 
     private func setupApplication() {
         // ViewModel.
-        self.notifications = Notifications(self.persistentContainer.viewContext)
+        self.notifications = Notifications()
 
         // View.
-        self.notificationsVC = NotificationsVC(nibName: "NotificationsVC", bundle: nil)
+        self.notificationsVC = NotificationsVC()
         let nvc = UINavigationController(rootViewController: self.notificationsVC)
         self.window!.rootViewController = nvc
 
@@ -49,6 +54,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.notifications.notifications
             .asObservable()
             .bind(to: self.notificationsVC.notifications)
+            .disposed(by: self.disposeBag)
+
+        self.setupStore()
+    }
+
+    func setupStore() {
+        // Backing store.
+        self.notificationsStore =
+            NotificationsStore(self.persistentContainer.viewContext)
+
+        // Restore old notifications.
+        self.notifications.notifications.value =
+            self.notificationsStore.loadNotifications()
+
+        // Save new notifications when they arrive.
+        self.notifications.notifications
+            .asObservable()
+            .skip(1)
+            .filter { !$0.isEmpty }
+            .subscribe(onNext: { [unowned self] notifications in
+                let notification = notifications.last!
+                self.notificationsStore.addNotification(notification)
+            })
             .disposed(by: self.disposeBag)
     }
 
@@ -103,7 +131,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
         */
-        let container = NSPersistentContainer(name: "notifications")
+        let container = NSPersistentContainer(name: Const.StoreName)
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.

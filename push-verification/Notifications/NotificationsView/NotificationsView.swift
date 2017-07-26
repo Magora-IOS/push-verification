@@ -34,6 +34,7 @@ class NotificationsView: UIView, UITableViewDataSource, UITableViewDelegate {
                 at: lastRow,
                 at: .bottom,
                 animated: true)
+            NSLog("Scroll to row '\(lastRow)'")
         }
     }
 
@@ -43,18 +44,21 @@ class NotificationsView: UIView, UITableViewDataSource, UITableViewDelegate {
         // Refresh table view when items change.
         self.notifications
             .asObservable()
-            .map { return !$0.isEmpty }
+            .filter { return !$0.isEmpty }
             .subscribe(onNext: { [unowned self] _ in
                 // Insert new item in the last row.
                 let lastRow =
                     IndexPath(
                         row: self.notifications.value.count - 1,
                         section: 0)
+                NSLog("Insert last row '\(lastRow)'")
                 self.tableView.beginUpdates()
                 self.tableView.insertRows(at: [lastRow], with: .none)
                 self.tableView.endUpdates()
                 
-                self.scrollToBottom()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: { [unowned self] _ in
+                    self.scrollToBottom()
+                })
                 
             })
             .disposed(by: self.disposeBag)

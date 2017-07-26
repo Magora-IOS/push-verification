@@ -8,7 +8,7 @@ struct NotificationsItem : CustomStringConvertible {
 
     var description: String {
         return
-            "NotifiationsItems(date: '\(date)' " +
+            "NotifiationsItem(date: '\(date)' " +
             "payload: '\(payload)')"
     }
 }
