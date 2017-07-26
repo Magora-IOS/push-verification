@@ -23,6 +23,14 @@ class NotificationsView: UIView, UITableViewDataSource, UITableViewDelegate {
     private let disposeBag = DisposeBag()
 
     @IBOutlet private var tableView: UITableView!
+    
+    // TMP: REMOVE.
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        NSLog("layoutSubviews.TableView frame size: '\(self.tableView.frame.size)'")
+        self.scrollToBottom()
+    }
 
     private func scrollToBottom() {
         if (!self.notifications.value.isEmpty) {
@@ -35,6 +43,7 @@ class NotificationsView: UIView, UITableViewDataSource, UITableViewDelegate {
                 at: .bottom,
                 animated: true)
             NSLog("Scroll to row '\(lastRow)'")
+            NSLog("scrollToBottom.TableView frame size: '\(self.tableView.frame.size)'")
         }
     }
 
@@ -56,9 +65,9 @@ class NotificationsView: UIView, UITableViewDataSource, UITableViewDelegate {
                 self.tableView.insertRows(at: [lastRow], with: .none)
                 self.tableView.endUpdates()
                 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: { [unowned self] _ in
+                //DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: { [unowned self] _ in
                     self.scrollToBottom()
-                })
+                //})
                 
             })
             .disposed(by: self.disposeBag)
@@ -85,6 +94,7 @@ class NotificationsView: UIView, UITableViewDataSource, UITableViewDelegate {
     func setupTableViewCellHeight() {
         // Make cells self-sizing.
         self.tableView.rowHeight = UITableViewAutomaticDimension
+        //self.tableView.rowHeight = Const.NotificationsItemCellEstimatedHeight
     }
     
     func tableView(
