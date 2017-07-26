@@ -24,15 +24,7 @@ class NotificationsView: UIView, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet private var tableView: UITableView!
     
-    // TMP: REMOVE.
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        NSLog("layoutSubviews.TableView frame size: '\(self.tableView.frame.size)'")
-        self.scrollToBottom()
-    }
-
-    private func scrollToBottom() {
+    func scrollToBottom() {
         if (!self.notifications.value.isEmpty) {
             let lastRow =
                 IndexPath(
