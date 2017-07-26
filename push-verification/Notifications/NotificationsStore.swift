@@ -52,8 +52,8 @@ class NotificationsStore {
                 var notification = NotificationsItem()
                 notification.date = item.value(forKey: Const.Date) as! Date
                 notification.payload = item.value(forKey: Const.Payload) as! String
-                // Append.
-                notifications.append(notification)
+                // Add new notification to the front.
+                notifications.insert(notification, at: 0)
             }
         }
         catch let error as NSError {

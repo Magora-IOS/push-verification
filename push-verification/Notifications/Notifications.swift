@@ -35,8 +35,8 @@ class Notifications {
         let prettyPayload = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
         item.payload =  prettyPayload! as String
         
-        //item.payload = userInfo
-        notifications.value.append(item)
+        // New notifications are at the front.
+        notifications.value.insert(item, at: 0)
 
         completionHandler(.newData)
     }

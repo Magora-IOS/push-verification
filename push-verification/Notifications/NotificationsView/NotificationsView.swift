@@ -24,43 +24,18 @@ class NotificationsView: UIView, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet private var tableView: UITableView!
     
-    func scrollToBottom() {
-        if (!self.notifications.value.isEmpty) {
-            let lastRow =
-                IndexPath(
-                    row: self.notifications.value.count - 1,
-                    section: 0)
-            self.tableView.scrollToRow(
-                at: lastRow,
-                at: .bottom,
-                animated: true)
-            NSLog("Scroll to row '\(lastRow)'")
-            NSLog("scrollToBottom.TableView frame size: '\(self.tableView.frame.size)'")
-        }
-    }
-
     private func setupNotificationsView() {
         self.setupTableView()
 
-        // Refresh table view when items change.
+        // Insert new items into table view.
         self.notifications
             .asObservable()
             .filter { return !$0.isEmpty }
             .subscribe(onNext: { [unowned self] _ in
-                // Insert new item in the last row.
-                let lastRow =
-                    IndexPath(
-                        row: self.notifications.value.count - 1,
-                        section: 0)
-                NSLog("Insert last row '\(lastRow)'")
+                let firstRow = IndexPath(row: 0, section: 0)
                 self.tableView.beginUpdates()
-                self.tableView.insertRows(at: [lastRow], with: .none)
+                self.tableView.insertRows(at: [firstRow], with: .none)
                 self.tableView.endUpdates()
-                
-                //DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: { [unowned self] _ in
-                    self.scrollToBottom()
-                //})
-                
             })
             .disposed(by: self.disposeBag)
     }
@@ -86,7 +61,6 @@ class NotificationsView: UIView, UITableViewDataSource, UITableViewDelegate {
     func setupTableViewCellHeight() {
         // Make cells self-sizing.
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        //self.tableView.rowHeight = Const.NotificationsItemCellEstimatedHeight
     }
     
     func tableView(
@@ -124,8 +98,6 @@ class NotificationsView: UIView, UITableViewDataSource, UITableViewDelegate {
     func tableView(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-        NSLog("cellForRow(\(indexPath.row))")
 
         let cell =
             tableView.dequeueReusableCell(

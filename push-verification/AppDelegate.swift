@@ -74,7 +74,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .skip(1)
             .filter { !$0.isEmpty }
             .subscribe(onNext: { [unowned self] notifications in
-                let notification = notifications.last!
+                // New notifications are in the front.
+                let notification = notifications.first!
                 self.notificationsStore.addNotification(notification)
             })
             .disposed(by: self.disposeBag)

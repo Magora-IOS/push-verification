@@ -16,11 +16,6 @@ class NotificationsVC: UIViewController {
         static let NotificationsView = "NotificationsView"
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.notificationsView.scrollToBottom()
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupNotificationsVC()
