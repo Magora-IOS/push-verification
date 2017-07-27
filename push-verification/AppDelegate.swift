@@ -56,10 +56,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .bind(to: self.notificationsVC.notifications)
             .disposed(by: self.disposeBag)
 
+        self.setupSharing()
         self.setupStore()
     }
 
-    func setupStore() {
+    private func setupSharing() {
+        // Present sharing screen.
+        self.notificationsVC.signal
+            .asObservable()
+            .subscribe(onNext: { [unowned self] _ in
+                let activityVC =
+                    UIActivityViewController(
+                        activityItems: [self.notifications.deviceToken.value],
+                        applicationActivities: nil)
+                // Display sharing dialog in a popover dialog for iPad.
+                if let popoverPC = activityVC.popoverPresentationController {
+                    popoverPC.barButtonItem = self.notificationsVC.shareButton
+                }
+                self.notificationsVC.present(activityVC, animated: true, completion: nil)
+            })
+            .disposed(by: self.disposeBag)
+    }
+
+    private func setupStore() {
         // Backing store.
         self.notificationsStore =
             NotificationsStore(self.persistentContainer.viewContext)

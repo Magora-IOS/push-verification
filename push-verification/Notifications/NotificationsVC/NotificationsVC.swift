@@ -17,6 +17,8 @@ class NotificationsVC: UIViewController {
 
     // MARK: - PUBLIC
 
+    var shareButton: UIBarButtonItem!
+
     let deviceToken: Variable<String> = Variable("")
 
     let notifications: Variable<[NotificationsItem]> = Variable([])
@@ -70,11 +72,11 @@ class NotificationsVC: UIViewController {
 
     private func setupSharing() {
         // Create share button.
-        let shareButton = UIBarButtonItem(barButtonSystemItem: .action, target: nil, action: nil)
-        self.navigationItem.rightBarButtonItem = shareButton
+        self.shareButton = UIBarButtonItem(barButtonSystemItem: .action, target: nil, action: nil)
+        self.navigationItem.rightBarButtonItem = self.shareButton
 
         // Share device token when tapped.
-        shareButton.rx.tap
+        self.shareButton.rx.tap
             .subscribe(onNext: { [unowned self] _ in
                 self.signal.value = .ShareToken
             })
