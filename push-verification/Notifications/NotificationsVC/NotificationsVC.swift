@@ -6,6 +6,15 @@ import UIKit
 
 class NotificationsVC: UIViewController {
 
+    // MARK: - SIGNALS
+    
+    enum Signal {
+        case None
+        case ShareToken
+    }
+
+    let signal: Variable<Signal> = Variable(.None)
+
     // MARK: - PUBLIC
 
     let deviceToken: Variable<String> = Variable("")
@@ -38,6 +47,7 @@ class NotificationsVC: UIViewController {
         self.setupTopOffset()
         self.setupDeviceToken()
         self.setupNotifications()
+        self.setupSharing()
     }
 
     private func setupDeviceToken() {
@@ -55,6 +65,19 @@ class NotificationsVC: UIViewController {
         self.notifications
             .asObservable()
             .bind(to: self.notificationsView.notifications)
+            .disposed(by: self.disposeBag)
+    }
+
+    private func setupSharing() {
+        // Create share button.
+        let shareButton = UIBarButtonItem(barButtonSystemItem: .action, target: nil, action: nil)
+        self.navigationItem.rightBarButtonItem = shareButton
+
+        // Share device token when tapped.
+        shareButton.rx.tap
+            .subscribe(onNext: { [unowned self] _ in
+                self.signal.value = .ShareToken
+            })
             .disposed(by: self.disposeBag)
     }
 
