@@ -1,3 +1,6 @@
+
+<p align="center" ><img src="readme/logo.png" title="Logo" float=left></p>
+
 # Overview
 
 `push-verification` is an iOS application to test push notifications.
