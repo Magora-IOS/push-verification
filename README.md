@@ -4,6 +4,15 @@
 
 ![Preview](readme/preview.gif)
 
+# Features
+* Display device token
+* Share device token using standard Sharing dialog
+* Display received notifications
+   * Payload
+   * Date
+* Keep notifications between application restarts
+
+
 # Localization
 
 Localization is located in [Google Sheet](https://goo.gl/k3Bgx9) and
