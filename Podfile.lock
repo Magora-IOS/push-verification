@@ -1,18 +1,25 @@
 PODS:
+  - Crashlytics (3.8.5):
+    - Fabric (~> 1.6.3)
+  - Fabric (1.6.12)
   - RxCocoa (3.5.0):
     - RxSwift (~> 3.4)
   - RxSwift (3.5.0)
   - SnapKit (3.2.0)
 
 DEPENDENCIES:
+  - Crashlytics (~> 3)
+  - Fabric (~> 1)
   - RxCocoa (~> 3)
   - SnapKit (~> 3)
 
 SPEC CHECKSUMS:
+  Crashlytics: dfbae35ef22ca189240d230ad501feea4ee85d2d
+  Fabric: f050464eac45a2ce5a8e6e6a07e977c0df32fe28
   RxCocoa: a0a09f45d0e5b48ecb6a4a7b4b4c89c88d3f633f
   RxSwift: 18ee9d78b45edb3b0b7e79916b47a116e6dbc842
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
 
-PODFILE CHECKSUM: f331121ba0abf7cd7d66d14cc6b235ced653f21b
+PODFILE CHECKSUM: ec49c809300cd62b67ac813cd28f7860aee70c2d
 
 COCOAPODS: 1.2.1

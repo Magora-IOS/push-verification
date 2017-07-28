@@ -1,5 +1,7 @@
 
 import CoreData
+import Fabric
+import Crashlytics
 import RxCocoa
 import RxSwift
 import UIKit
@@ -36,6 +38,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private let disposeBag = DisposeBag()
 
     private func setupApplication() {
+        // Crashlytics.
+        Fabric.with([Crashlytics.self])
+
         // ViewModel.
         self.notifications = Notifications()
 

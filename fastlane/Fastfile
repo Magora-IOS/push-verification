@@ -1,0 +1,59 @@
+# Customise this file, documentation can be found here:
+# https://github.com/fastlane/fastlane/tree/master/fastlane/docs
+# All available actions: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Actions.md
+# can also be listed using the `fastlane actions` command
+
+# This is the minimum version number required.
+# Update this, if you use features of a newer version
+fastlane_version "2.25"
+
+default_platform :ios
+
+# Get or update QA profile.
+def qa_match(app_name, refresh_profiles = false)
+    match(
+        app_identifier: "com.magora-team.#{app_name}",
+        git_url: "https://bitbucket.org/mgrsys/ios_cert.git",
+        git_branch: "master",
+        team_id: "65B5B68C2U",
+        username: "apple@magora-systems.com",
+        type: "adhoc",
+        readonly: !refresh_profiles,
+        force: refresh_profiles
+    )
+end
+
+# Build for QA.
+def submit_qa_build(app_name, cfg_name)
+    qa_match(app_name)
+    gym(
+        clean: true,
+        scheme: "push-verification",
+        configuration: cfg_name,
+        export_method: "ad-hoc",
+        include_bitcode: false,
+        output_directory: "./builds"
+    )
+    version = get_version_number(xcodeproj: "push-verification.xcodeproj")
+    sh "cd .. && ./Pods/Crashlytics/submit 43dbe2724d32859e07ef950cc13f70bf2e35a2b0 01a720c563c1b74d50996a9e4939498edd3be979b7c2b9642d65401cb433d23d -ipaPath \"./builds/#{app_name}.ipa\" -groupAliases \"push-verification-testers\" -notifications YES"
+end
+
+platform :ios do
+
+    before_all do
+        cocoapods()
+    end
+
+    # QA builds.
+    desc "Submit a new QA build"
+    lane :qa do
+        submit_qa_build("push-verification", "Release")
+    end
+    
+    desc "Update QA profiles"
+    lane :prof_qa do
+        qa_match("push-verification", true)
+    end
+
+end
+

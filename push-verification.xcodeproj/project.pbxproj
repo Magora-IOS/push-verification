@@ -174,6 +174,7 @@
 				133565981F14B1B90094A823 /* Resources */,
 				62172D5BF7AB9490DC2F59B6 /* [CP] Embed Pods Frameworks */,
 				00688396964E5B69E1C56ABC /* [CP] Copy Pods Resources */,
+				133E6F341F2B099100824682 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -259,6 +260,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-push-verification/Pods-push-verification-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		133E6F341F2B099100824682 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 43dbe2724d32859e07ef950cc13f70bf2e35a2b0 01a720c563c1b74d50996a9e4939498edd3be979b7c2b9642d65401cb433d23d";
 		};
 		62172D5BF7AB9490DC2F59B6 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
